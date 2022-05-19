@@ -27,6 +27,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+//frontend route
+
 Route::get('/',[FrontController::class,'index']);
 Route::get('category/{id}',[FrontController::class,'category']);
 Route::get('product/{id}',[FrontController::class,'product']);
@@ -43,6 +46,11 @@ Route::get('logout', function () {
     session()->forget('USER_TEMP_ID');
     return redirect('/');
 });
+
+
+
+
+
 Route::get('/verification/{id}',[FrontController::class,'email_verification']);
 Route::post('forgot_password',[FrontController::class,'forgot_password']);
 Route::get('/forgot_password_change/{id}',[FrontController::class,'forgot_password_change']);
@@ -65,6 +73,9 @@ Route::group(['middleware'=>'disable_back_btn'],function(){
 });
 
 
+
+//admin route
+
 Route::get('admin',[AdminController::class,'index']);
 Route::post('admin/auth',[AdminController::class,'auth'])->name('admin.auth');
 
@@ -78,6 +89,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
     Route::get('admin/category/status/{status}/{id}',[CategoryController::class,'status']);
 
+    
+    
+    
     Route::get('admin/coupon',[CouponController::class,'index']);
     Route::get('admin/coupon/manage_coupon',[CouponController::class,'manage_coupon']);
     Route::get('admin/coupon/manage_coupon/{id}',[CouponController::class,'manage_coupon']);
@@ -85,6 +99,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/coupon/delete/{id}',[CouponController::class,'delete']);
     Route::get('admin/coupon/status/{status}/{id}',[CouponController::class,'status']);
 
+    
+    
+    
     Route::get('admin/size',[SizeController::class,'index']);
     Route::get('admin/size/manage_size',[SizeController::class,'manage_size']);
     Route::get('admin/size/manage_size/{id}',[SizeController::class,'manage_size']);
@@ -92,6 +109,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/cousizepon/delete/{id}',[SizeController::class,'delete']);
     Route::get('admin/size/status/{status}/{id}',[SizeController::class,'status']);
 
+    
+    
+    
     Route::get('admin/color',[ColorController::class,'index']);
     Route::get('admin/color/manage_color',[ColorController::class,'manage_color']);
     Route::get('admin/color/manage_color/{id}',[ColorController::class,'manage_color']);
@@ -100,6 +120,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/color/status/{status}/{id}',[ColorController::class,'status']);
 
 
+    
+    
+    
     Route::get('admin/product',[ProductController::class,'index']);
     Route::get('admin/product/manage_product',[ProductController::class,'manage_product']);
     Route::get('admin/product/manage_product/{id}',[ProductController::class,'manage_product']);
@@ -109,6 +132,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/product/product_attr_delete/{paid}/{pid}',[ProductController::class,'product_attr_delete']);
     Route::get('admin/product/product_images_delete/{paid}/{pid}',[ProductController::class,'product_images_delete']);
 
+    
+    
+    
     Route::get('admin/brand',[BrandController::class,'index']);
     Route::get('admin/brand/manage_brand',[BrandController::class,'manage_brand']);
     Route::get('admin/brand/manage_brand/{id}',[BrandController::class,'manage_brand']);
@@ -116,6 +142,9 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/brand/delete/{id}',[BrandController::class,'delete']);
     Route::get('admin/brand/status/{status}/{id}',[BrandController::class,'status']);
 
+    
+    
+    
     Route::get('admin/tax',[TaxController::class,'index']);
     Route::get('admin/tax/manage_tax',[TaxController::class,'manage_tax']);
     Route::get('admin/tax/manage_tax/{id}',[TaxController::class,'manage_tax']);
@@ -123,6 +152,8 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/tax/delete/{id}',[TaxController::class,'delete']);
     Route::get('admin/tax/status/{status}/{id}',[TaxController::class,'status']);
 
+    
+    
     Route::get('admin/tax',[TaxController::class,'index']);
     Route::get('admin/tax/manage_tax',[TaxController::class,'manage_tax']);
     Route::get('admin/tax/manage_tax/{id}',[TaxController::class,'manage_tax']);
@@ -142,6 +173,7 @@ Route::group(['middleware'=>'admin_auth'],function(){
     Route::get('admin/home_banner/delete/{id}',[HomeBannerController::class,'delete']);
     Route::get('admin/home_banner/status/{status}/{id}',[HomeBannerController::class,'status']);
 
+    
     Route::get('admin/order',[OrderController::class,'index']);
     Route::get('admin/order_detail/{id}',[OrderController::class,'order_detail']);
     Route::post('admin/order_detail/{id}',[OrderController::class,'update_track_detail']);
